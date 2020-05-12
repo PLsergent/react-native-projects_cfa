@@ -52,30 +52,32 @@ export const styles = StyleSheet.create({
     color: 'white'
   },
 
-  menu: {
+  picker: {
     marginLeft: 10,
     marginRight: 10,
   },
   dropdownTextStyle: {
-    fontSize: 20
+    fontSize: 22,
+    color: "black"
   },
   textStyle: {
-    fontSize: 20,
+    paddingVertical: 5,
+    fontSize: 25,
   },
 
   dropdownButtonStyle: {
-    width: 30,
+    width: 50,
     backgroundColor: "#dddddd",
     borderRadius: 5,
     alignItems: 'center'
   },
-  menuContainer: {
+  pickerContainer: {
     flexDirection: 'row', 
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 10
   },
-  menuLabel: {
+  pickerLabel: {
     fontSize: 20
   }
 });

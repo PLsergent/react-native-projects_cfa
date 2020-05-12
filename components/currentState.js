@@ -9,7 +9,7 @@ export default class currentState extends React.Component {
 				{
 				  this.props.working ?
 				  <Text style={styles.labelGreen}>Working</Text> :
-				  <Text style={styles.labelRed}>Pause</Text>
+				  <Text style={styles.labelRed}>Break</Text>
 				}
 			</View>
 		)

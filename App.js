@@ -1,7 +1,8 @@
 import React from 'react';
 import { Text, View, Alert } from 'react-native';
 import { styles } from './assets/stylesheet';
-import Menu from './components/menu';
+import PickerWork from './components/pickerWork';
+import PickerBreak from './components/pickerBreak';
 import Button from './components/buttonPlayPause';
 import ButtonR from './components/buttonReset';
 import Timer from './components/timer';
@@ -84,7 +85,7 @@ class App extends React.Component {
     }
   }
 
-  resetButton () {
+  resetButton() {
     if (this.state.playing === true) {
       this.playPauseButton();
       this.setState({
@@ -187,16 +188,16 @@ class App extends React.Component {
                 onPress={this.resetButton} 
               />
             </View>
-            <View style={styles.menuContainer}>
-              <Text style={styles.menuLabel}>Définir le temps de travail (min): </Text>
-              <Menu 
+            <View style={styles.pickerContainer}>
+              <Text style={styles.pickerLabel}>Work time (min): </Text>
+              <PickerWork 
                 selected={Number(this.state.workTime.slice(0, 2)).toString()}
                 onValueChange={this.setWorkTimer}
               />
             </View>
-            <View style={styles.menuContainer}>
-              <Text style={styles.menuLabel}>Définir le temps de pause (min): </Text>
-              <Menu 
+            <View style={styles.pickerContainer}>
+              <Text style={styles.pickerLabel}>Break time (min): </Text>
+              <PickerBreak 
                 selected={Number(this.state.breakTime.slice(0, 2)).toString()}
                 onValueChange={this.setBreakTimer}
               />
