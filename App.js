@@ -10,6 +10,7 @@ import NavBar from './components/navbar';
 import { Root, Container } from 'native-base';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
+import moment from 'moment';
 
 
 function leftPadding(n) {
@@ -106,53 +107,36 @@ class App extends React.Component {
 
   countdown() {
     if (this.state.currentTime === "00:00" && this.state.playing === true) {
-       if (this.state.working){
-              Alert.alert(
-            "Terminé",
-            "Temps de travail terminé",
-            [
-              {
-                text: "Cancel",
-                onPress: () => console.log("Cancel Pressed"),
-                style: "cancel"
-              },
-              { text: "OK", onPress: () => console.log("OK Pressed") }
-            ],
-            { cancelable: false }
-          );
-       }else{
-         Alert.alert(
-            "Terminé",
-            "Temps de pause terminé",
-            [
-              {
-                text: "Cancel",
-                onPress: () => console.log("Cancel Pressed"),
-                style: "cancel"
-              },
-              { text: "OK", onPress: () => console.log("OK Pressed") }
-            ],
-            { cancelable: false }
-          );
-       }
-      console.log('finished');
+      if (this.state.working) {
+        Alert.alert(
+          "Done",
+          "Working time done",
+          [
+            {
+              text: "Take a break", onPress: () => {}
+            }
+          ],
+          { cancelable: false }
+        )
+      } else {
+        Alert.alert(
+          "Done",
+          "Break time done",
+          [
+            {
+              text: "Get back to work", onPress: () => {}
+            }
+          ],
+          { cancelable: false }
+        )
+      }
       this.toggleStatus();
     } else {
-      let sec = this.state.currentTime.slice(3);
-      let min = this.state.currentTime.slice(0, 2);
-      if (sec === "00") {
-        let newMin = leftPadding(parseInt(min) - 1);
-        let newTime = newMin + ":59";
-        this.setState({
-          currentTime: newTime,
-        });
-      } else {
-        let newSec = leftPadding((parseInt(sec) - 1));
-        let newTime = min + ":" + newSec;
-        this.setState({
-          currentTime: newTime,
-        })
-      }
+      var time = moment(this.state.currentTime, "mm:ss");
+      time.subtract(1, 'seconds');
+      this.setState({
+        currentTime: time.format("mm:ss")
+      })
     }
   }
 
