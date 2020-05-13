@@ -6,8 +6,9 @@ export default {
     Root: {
       path: 'root',
       screens: {
-        Home: 'home',
-        Links: 'links',
+        Movies: 'movies',
+        Search: 'seach',
+        Settings: 'settings'
       },
     },
   },
