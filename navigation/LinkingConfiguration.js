@@ -7,7 +7,7 @@ export default {
       path: 'root',
       screens: {
         Movies: 'movies',
-        Search: 'seach',
+        Search: 'search',
         Settings: 'settings'
       },
     },

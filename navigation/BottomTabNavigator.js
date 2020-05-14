@@ -1,13 +1,26 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 
 import TabBarIcon from '../components/TabBarIcon';
 import MoviesScreen from '../screens/MoviesScreen';
+import MovieDetailsScreen from '../screens/MovieDetailsScreen';
 import SearchScreen from '../screens/SearchScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Movies';
+
+const MoviesStackNavigator = createStackNavigator();
+
+function MoviesStack() {
+  return (
+    <MoviesStackNavigator.Navigator screenOptions={{ headerShown: false }}>
+      <MoviesStackNavigator.Screen name="Movies" component={MoviesScreen} />
+      <MoviesStackNavigator.Screen name="MovieDetails" component={MovieDetailsScreen} />
+    </MoviesStackNavigator.Navigator>
+  );
+}
 
 export default function BottomTabNavigator({ navigation, route }) {
   // Set the header title on the parent stack navigator depending on the
@@ -19,7 +32,7 @@ export default function BottomTabNavigator({ navigation, route }) {
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
       <BottomTab.Screen
         name="Movies"
-        component={MoviesScreen}
+        component={MoviesStack}
         options={{
           title: 'Movies',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="home" />,
