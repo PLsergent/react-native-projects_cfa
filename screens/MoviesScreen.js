@@ -3,7 +3,7 @@ import { StyleSheet, FlatList } from 'react-native';
 import MovieComponent from '../components/MovieComponent';
 
 const data = [{
-  id: 1,
+  id: 567097,
   poster_path: "",
   title: "Movie Test",
   vote_average: 5,
@@ -21,7 +21,7 @@ export default class MoviesScreen extends React.Component {
   }
 
   _displayDetailForMovie = (idMovie) => {
-    this.props.navigation.navigate('MovieDetailsScreen', { idMovie: idMovie });
+    this.props.navigation.navigate('MovieDetails', {idMovie: idMovie});
   }
 
   render() {
@@ -31,7 +31,8 @@ export default class MoviesScreen extends React.Component {
         data={data}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <MovieComponent movie={item}
+          <MovieComponent
+            movie={item}
             displayDetailForMovie={this._displayDetailForMovie}
           />
         )}

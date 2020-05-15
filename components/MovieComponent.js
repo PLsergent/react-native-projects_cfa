@@ -12,11 +12,11 @@ export default class MovieComponent extends React.Component {
       <FadeIn>
         <TouchableOpacity
           style={styles.main_container}
-          //onPress={() => displayDetailForMovie(movie.id)}
+          onPress={() => displayDetailForMovie(movie.id)}
         >
           <Image
             style={styles.image}
-            //source={{uri: getImage(movie.poster_path)}}
+            source={{uri: getImage(movie.poster_path)}}
           />
           <View style={styles.content}>
             <View style={styles.header}>
@@ -41,14 +41,15 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     height: 190,
-    backgroundColor: '#cceeff',
-    marginBottom: 5
+    backgroundColor: '#FDF8ED',
+    marginBottom: 5,
+    borderRadius: 10
   },
   image: {
     width: 120,
     height: 180,
     margin: 5,
-    backgroundColor: 'gray'
+    backgroundColor: '#a098e0'
   },
   content: {
     flex: 1,
@@ -63,14 +64,15 @@ const styles = StyleSheet.create({
         flex: 4,
         fontSize: 20,
         flexWrap: 'wrap',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: "#4630eb"
       },
       rating: {
         textAlign: 'right',
         flex: 1,
         fontSize: 24,
         fontWeight: 'bold',
-        color: 'grey'
+        color: '#140152'
       },
     description: {
       flex: 6,
@@ -78,7 +80,8 @@ const styles = StyleSheet.create({
     },
       description_text: {
         fontSize: 16,
-        fontStyle: 'italic'
+        fontStyle: 'italic',
+        color: "#7785ac"
       },
     date:{
       flex: 1,
