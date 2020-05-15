@@ -25,7 +25,7 @@ function MoviesStack() {
   );
 }
 
-function AddMovieStack() {
+/* function AddMovieStack() {
   return (
     <AddMovieStackNavigator.Navigator screenOptions={{ headerShown: false }}>
       <AddMovieStackNavigator.Screen name="AddMovieForm" component={} />
@@ -36,7 +36,7 @@ function AddMovieStack() {
     // List of possible movies base on the API, choose one >
     // Movie added to the list
   );
-}
+} */
 
 export default function BottomTabNavigator({ navigation, route }) {
   // Set the header title on the parent stack navigator depending on the
@@ -98,5 +98,7 @@ function getHeaderTitle(route) {
       return 'Search';
     case 'Settings':
       return 'Settings'
+    case 'AddMovie':
+      return 'Add Movie'
   }
 }
