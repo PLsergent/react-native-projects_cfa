@@ -7,11 +7,14 @@ import MoviesScreen from '../screens/MoviesScreen';
 import MovieDetailsScreen from '../screens/MovieDetailsScreen';
 import SearchScreen from '../screens/SearchScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import AddMovieButton from '../components/AddMovieButton';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Movies';
 
 const MoviesStackNavigator = createStackNavigator();
+const AddMovieStackNavigator = createStackNavigator();
+
 
 function MoviesStack() {
   return (
@@ -22,11 +25,30 @@ function MoviesStack() {
   );
 }
 
+function AddMovieStack() {
+  return (
+    <AddMovieStackNavigator.Navigator screenOptions={{ headerShown: false }}>
+      <AddMovieStackNavigator.Screen name="AddMovieForm" component={} />
+      <AddMovieStackNavigator.Screen name="AddMovieValidate" component={} />
+    </AddMovieStackNavigator.Navigator>
+
+    // Enter the name of the movie inside the form then, Submit then >
+    // List of possible movies base on the API, choose one >
+    // Movie added to the list
+  );
+}
+
 export default function BottomTabNavigator({ navigation, route }) {
   // Set the header title on the parent stack navigator depending on the
   // currently active tab. Learn more in the documentation:
   // https://reactnavigation.org/docs/en/screen-options-resolution.html
-  navigation.setOptions({ headerTitle: getHeaderTitle(route) });
+
+  navigation.setOptions({
+    headerTitle: getHeaderTitle(route),
+    headerRight: () => (
+            <AddMovieButton />
+          )
+  });
 
   return (
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
@@ -35,7 +57,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={MoviesStack}
         options={{
           title: 'Movies',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="home" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="home" />
         }}
       />
       <BottomTab.Screen
@@ -44,6 +66,14 @@ export default function BottomTabNavigator({ navigation, route }) {
         options={{
           title: 'Search',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="search1" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="AddMovie"
+        component={SettingsScreen}
+        options={{
+          title: 'Add Movie',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="pluscircleo" />,
         }}
       />
       <BottomTab.Screen
