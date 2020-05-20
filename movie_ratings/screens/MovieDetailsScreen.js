@@ -74,7 +74,6 @@ export default class MovieDetailsScreen extends React.Component {
     render() {
         const { navigation, route } = this.props;
         const params = route.params;
-        const idMovie = params.idMovie
         return (
             <View style={styles.main_container}>
                 {this._displayMovie()}

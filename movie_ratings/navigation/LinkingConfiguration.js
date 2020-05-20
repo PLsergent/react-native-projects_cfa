@@ -8,6 +8,7 @@ export default {
       screens: {
         Movies: 'movies',
         Search: 'search',
+        AddMovie: 'add_movie',
         Settings: 'settings'
       },
     },
