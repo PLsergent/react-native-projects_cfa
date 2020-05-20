@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 
 import TabBarIcon from '../components/TabBarIcon';
-import{ MoviesStack, AddMovieStack } from './NavigationStack';
+import{ MoviesStack, AddMovieStack, SearchStack, SettingsStack } from './NavigationStack';
 import SearchScreen from '../screens/SearchScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -14,23 +14,20 @@ export default function BottomTabNavigator({ navigation, route }) {
   // currently active tab. Learn more in the documentation:
   // https://reactnavigation.org/docs/en/screen-options-resolution.html
 
-  navigation.setOptions({
-    headerTitle: getHeaderTitle(route)
-  });
 
   return (
-    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
+    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME} >
       <BottomTab.Screen
         name="Movies"
         component={MoviesStack}
         options={{
           title: 'Movies',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="home" />
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="home"/>
         }}
       />
       <BottomTab.Screen
         name="Search"
-        component={SearchScreen}
+        component={SearchStack}
         options={{
           title: 'Search',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="search1" />,
@@ -46,7 +43,7 @@ export default function BottomTabNavigator({ navigation, route }) {
       />
       <BottomTab.Screen
         name="Settings"
-        component={SettingsScreen}
+        component={SettingsStack}
         options={{
           title: 'Settings',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="setting" />,

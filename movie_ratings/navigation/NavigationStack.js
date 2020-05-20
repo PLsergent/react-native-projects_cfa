@@ -1,7 +1,9 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 
-import MoviesScreen from '../screens/MoviesScreen';
+import { MoviesScreen } from '../screens/MoviesScreen';
+import SearchScreen from '../screens/SearchScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 import MovieDetailsScreen from '../screens/MovieDetailsScreen';
 
 import AddMovieScreen from '../screens/AddMovieScreen';
@@ -9,26 +11,44 @@ import AddMovieScreen from '../screens/AddMovieScreen';
 
 const MoviesStackNavigator = createStackNavigator();
 const AddMovieStackNavigator = createStackNavigator();
+const SearchStackNavigator = createStackNavigator();
+const SettingsStackNavigator = createStackNavigator();
 
 
 export function MoviesStack() {
   return (
-    <MoviesStackNavigator.Navigator screenOptions={{ headerShown: false }}>
+    <MoviesStackNavigator.Navigator>
       <MoviesStackNavigator.Screen name="Movies" component={MoviesScreen} />
-      <MoviesStackNavigator.Screen name="MovieDetails" component={MovieDetailsScreen} />
+      <MoviesStackNavigator.Screen name="Movie details" component={MovieDetailsScreen} />
     </MoviesStackNavigator.Navigator>
   );
 }
 
 export function AddMovieStack() {
   return (
-    <AddMovieStackNavigator.Navigator screenOptions={{ headerShown: false }}>
-      <AddMovieStackNavigator.Screen name="AddMovieScreen" component={AddMovieScreen} />
+    <AddMovieStackNavigator.Navigator>
+      <AddMovieStackNavigator.Screen name="Add movie" component={AddMovieScreen} />
       {/* <AddMovieStackNavigator.Screen name="AddMovieValidate" component={} /> */}
     </AddMovieStackNavigator.Navigator>
 
     // Enter the name of the movie inside the form then, Submit then >
     // List of possible movies base on the API, choose one >
     // Movie added to the list
+  );
+}
+
+export function SearchStack() {
+  return (
+    <SearchStackNavigator.Navigator>
+      <SearchStackNavigator.Screen name="Search" component={SearchScreen} />
+    </SearchStackNavigator.Navigator>
+  );
+}
+
+export function SettingsStack() {
+  return (
+    <SettingsStackNavigator.Navigator>
+      <SettingsStackNavigator.Screen name="Settings" component={SettingsScreen} />
+    </SettingsStackNavigator.Navigator>
   );
 }

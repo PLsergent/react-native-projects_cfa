@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { StyleSheet, FlatList } from 'react-native';
 import MovieComponent from '../components/MovieComponent';
+import { connect } from 'react-redux';
+import store from '../store/configStore';
 
 const data = [{
   id: 567097,
@@ -11,28 +13,28 @@ const data = [{
   release_date: "20/09/2019"
 }]
 
-export default class MoviesScreen extends React.Component {
+export class MoviesScreen extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      movies: []
+      movies: store.getState()
     };
   }
 
-  _displayDetailForMovie = (idMovie) => {
-    this.props.navigation.navigate('MovieDetails', {idMovie: idMovie});
+  _displayDetailForMovie = (item) => {
+    this.props.navigation.navigate('MovieDetails', {item: item});
   }
 
   render() {
     return (
       <FlatList
         style={styles.list}
-        data={data}
+        data={this.state.movies}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <MovieComponent
-            movie={item}
+            item={item}
             displayDetailForMovie={this._displayDetailForMovie}
           />
         )}

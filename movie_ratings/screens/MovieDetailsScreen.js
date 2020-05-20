@@ -24,7 +24,7 @@ export default class MovieDetailsScreen extends React.Component {
         this.setState({ isLoading: true })
         const { navigation, route } = this.props;
         const params = route.params;
-        const idMovie = params.idMovie
+        const idMovie = params.item.id
         getMovieDetails(idMovie).then(data => {
             this.setState({
                 movie: data,
@@ -35,6 +35,10 @@ export default class MovieDetailsScreen extends React.Component {
 
     _displayMovie(){
         const movie = this.state.movie
+        const { navigation, route } = this.props;
+        const params = route.params;
+        const item = params.item;
+
         if (movie != undefined) {
             return (
             <ScrollView style={styles.scroll_view}>
@@ -45,7 +49,8 @@ export default class MovieDetailsScreen extends React.Component {
                 <Text style={styles.title_movie}>{ movie.title }</Text>
                 <Text style={styles.description_movie}>{ movie.overview }</Text>
                 <Text style={styles.informations_movie}>Release: { moment( movie.release_date ).format('L') }</Text>
-                <Text style={styles.informations_movie}>Rating: { movie.vote_average } / 10</Text>
+                <Text style={styles.informations_movie}>Rating average: { movie.vote_average } / 10</Text>
+                <Text style={styles.informations_movie}>My rating: { item.rating } / 10</Text>
                 <Text style={styles.informations_movie}>Number of vote: { movie.vote_count }</Text>
                 <Text style={styles.informations_movie}>Budget: {numeral(movie.budget).format('0,0')}$</Text>
                 <Text style={styles.informations_movie}>
@@ -72,8 +77,6 @@ export default class MovieDetailsScreen extends React.Component {
     }
 
     render() {
-        const { navigation, route } = this.props;
-        const params = route.params;
         return (
             <View style={styles.main_container}>
                 {this._displayMovie()}
@@ -86,7 +89,7 @@ export default class MovieDetailsScreen extends React.Component {
 const styles = StyleSheet.create({
     main_container: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: '#fcf9f2'
     },
     loading_container: {
         position: 'absolute',

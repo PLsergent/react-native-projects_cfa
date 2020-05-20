@@ -1,18 +1,39 @@
-import React from 'react'
-import { StyleSheet, View, Text, Image, TouchableOpacity, Animated, Dimensions } from 'react-native'
-import { getImage } from '../API/TMDBApi'
-import FadeIn from '../Animations/FadeIn'
+import React from 'react';
+import { StyleSheet, View, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { getImage, getMovieDetails } from '../API/TMDBApi';
+import FadeIn from '../Animations/FadeIn';
 
 export default class MovieComponent extends React.Component {
 
-  render() {
-    const { movie, displayDetailForMovie } = this.props
+  constructor(props) {
+    super(props)
+    this.state = {
+        movie: undefined,
+        isLoading : true
+    }
+  }
 
-    return (
-      <FadeIn>
+  componentDidMount() {
+    this.setState({ isLoading: true })
+    const { item, displayDetailForMovie } = this.props;
+
+    getMovieDetails(item.id).then(data => {
+        this.setState({
+            movie: data,
+            isLoading: false
+        })
+    })
+  }
+
+  _displayMovie() {
+    const movie = this.state.movie;
+    const { item, displayDetailForMovie } = this.props;
+
+    if (movie != undefined) {
+      return (
         <TouchableOpacity
           style={styles.main_container}
-          onPress={() => displayDetailForMovie(movie.id)}
+          onPress={() => displayDetailForMovie(item)}
         >
           <Image
             style={styles.image}
@@ -21,7 +42,7 @@ export default class MovieComponent extends React.Component {
           <View style={styles.content}>
             <View style={styles.header}>
               <Text style={styles.title_text} numberOfLines={2}>{ movie.title }</Text>
-              <Text style={styles.rating}>{ movie.vote_average }</Text>
+              <Text style={styles.rating}>{ item.rating }</Text>
             </View>
             <View style={styles.description}>
               <Text style={styles.description_text} numberOfLines={5}>{ movie.overview }</Text>
@@ -31,6 +52,29 @@ export default class MovieComponent extends React.Component {
             </View>
           </View>
         </TouchableOpacity>
+      )
+    }
+  }
+
+  _displayLoading() {
+    if (this.state.isLoading) {
+        return (
+        <View style={styles.loading_container}>
+            <ActivityIndicator size='large' />
+        </View>
+        )
+    }
+  }
+
+
+  render() {
+
+    const movie = this.state.movie;
+
+    return (
+      <FadeIn>
+        {this._displayMovie()}
+        {this._displayLoading()}
       </FadeIn>
     )
   }
