@@ -3,8 +3,6 @@ import * as React from 'react';
 
 import TabBarIcon from '../components/TabBarIcon';
 import{ MoviesStack, AddMovieStack, SearchStack, SettingsStack } from './NavigationStack';
-import SearchScreen from '../screens/SearchScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Movies';

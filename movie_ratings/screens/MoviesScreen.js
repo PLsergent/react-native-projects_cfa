@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, FlatList } from 'react-native';
 import MovieComponent from '../components/MovieComponent';
-import { connect } from 'react-redux';
 import store from '../store/configStore';
 
 const data = [{
@@ -23,7 +22,7 @@ export class MoviesScreen extends React.Component {
   }
 
   _displayDetailForMovie = (item) => {
-    this.props.navigation.navigate('MovieDetails', {item: item});
+    this.props.navigation.navigate('Movie details', {item: item});
   }
 
   render() {
@@ -42,6 +41,7 @@ export class MoviesScreen extends React.Component {
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   list: {
