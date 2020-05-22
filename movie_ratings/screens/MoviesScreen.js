@@ -3,22 +3,25 @@ import { StyleSheet, FlatList } from 'react-native';
 import MovieComponent from '../components/MovieComponent';
 import store from '../store/configStore';
 
-const data = [{
-  id: 567097,
-  poster_path: "",
-  title: "Movie Test",
-  vote_average: 5,
-  overview: "blablabla",
-  release_date: "20/09/2019"
-}]
-
 export class MoviesScreen extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      movies: store.getState()
+      movies: store.getState().movies
     };
+  }
+
+  componentDidMount() {
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener('focus', () => {
+      this.setState({ movies: store.getState().movies });
+    });
+  }
+
+  componentWillUnmount() {
+    // Remove the event listener before removing the screen from the stack
+    this.focusListener.remove();
   }
 
   _displayDetailForMovie = (item) => {
@@ -26,6 +29,7 @@ export class MoviesScreen extends React.Component {
   }
 
   render() {
+    
     return (
       <FlatList
         style={styles.list}

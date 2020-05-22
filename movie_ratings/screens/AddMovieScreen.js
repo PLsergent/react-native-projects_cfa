@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
-import { Content, Form, Item, Input, Label, Button, Text, Icon } from 'native-base';
+import { Content, Form, Item, Input, Label, Button, Text, Icon, Toast } from 'native-base';
 
 export default class AddMovieScreen extends React.Component {
 
@@ -14,6 +14,11 @@ export default class AddMovieScreen extends React.Component {
   handleSubmit = () => {
     if (this.state.name.length > 0 ) {
       this.props.navigation.navigate('Choose your movie in the list', {item: this.state.name});
+    } else {
+      Toast.show({
+        text: "Please enter a movie title.",
+        buttonText: 'Okay'
+      })
     }
   }
 
@@ -28,12 +33,12 @@ export default class AddMovieScreen extends React.Component {
       <Content contentContainerStyle={styles.container}>
         <Form>
           <Item stackedLabel style={styles.field}>
-            <Label>Name of the movie :</Label>
+            <Label>Enter a movie title :</Label>
             <Input onChangeText={this.handleNameChange}/>
           </Item>
         </Form>
         <Button block rounded primary style={styles.submitButton} iconRight onPress={this.handleSubmit}>
-          <Text> Submit </Text>
+          <Text> Next </Text>
           <Icon name='arrow-forward' />
         </Button>
       </Content>

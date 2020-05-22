@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
 import ListItemMovie from '../components/ListItem';
 import { getMovies } from '../API/TMDBApi';
+import { Toast } from 'native-base';
 
 export default class AddMovieValidate extends React.Component {
 
@@ -20,6 +21,12 @@ export default class AddMovieValidate extends React.Component {
         const name = params.item;
 
         getMovies(encodeURI(name), 1).then(data => {
+            if (data.results.length == 0) {
+                Toast.show({
+                    text: "No movie found, please go back and try another one.",
+                    buttonText: 'Okay'
+                })
+            }
             this.setState({
                 movies: data.results,
                 isLoading: false
@@ -27,8 +34,11 @@ export default class AddMovieValidate extends React.Component {
         })
     }
 
+    nextStepRating = (movie) => {
+        this.props.navigation.navigate('Rate the movie', {item: movie});
+    }
+
     _displayMovies() {
-        console.log(this.state.movies);
         if (this.state.movies.length > 0) {
             return (
                 <FlatList
@@ -39,6 +49,7 @@ export default class AddMovieValidate extends React.Component {
                         return (
                             <ListItemMovie 
                                 item={item}
+                                nextStepRating={this.nextStepRating}
                             />
                         )
                     }}

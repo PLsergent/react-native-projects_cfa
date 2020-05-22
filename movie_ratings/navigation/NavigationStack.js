@@ -5,8 +5,9 @@ import { MoviesScreen } from '../screens/MoviesScreen';
 import SearchScreen from '../screens/SearchScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import MovieDetailsScreen from '../screens/MovieDetailsScreen';
-import AddMovieValidate from "../screens/AddMovieValidate";
 import AddMovieScreen from '../screens/AddMovieScreen';
+import AddMovieValidate from "../screens/AddMovieValidate";
+import AddMovieRating from "../screens/AddMovieRating";
 
 
 const MoviesStackNavigator = createStackNavigator();
@@ -29,6 +30,7 @@ export function AddMovieStack() {
     <AddMovieStackNavigator.Navigator>
       <AddMovieStackNavigator.Screen name="Add movie" component={AddMovieScreen} />
       <AddMovieStackNavigator.Screen name="Choose your movie in the list" component={AddMovieValidate} />
+      <AddMovieStackNavigator.Screen name="Rate the movie" component={AddMovieRating} />
     </AddMovieStackNavigator.Navigator>
 
     // Enter the name of the movie inside the form then, Submit then >

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
 import {
     Icon,
     ListItem,
@@ -15,9 +14,9 @@ export default class ListItemMovie extends Component {
     }
 
     render() {
-        const { item } = this.props;
+        const { item, nextStepRating } = this.props;
         return (
-            <ListItem>
+            <ListItem style={{borderBottomColor: "#4630eb"}} onPress={() => nextStepRating(item)}>
                 <Left>
                     <Text>
                         { item.title }

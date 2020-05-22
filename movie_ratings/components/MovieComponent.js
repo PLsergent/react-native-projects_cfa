@@ -120,12 +120,15 @@ const styles = StyleSheet.create({
       },
     description: {
       flex: 6,
-      marginTop: 5
+      marginTop: 5,
+      marginRight: 7,
+      marginLeft: 2
     },
       description_text: {
         fontSize: 16,
         fontStyle: 'italic',
-        color: "#7785ac"
+        color: "#7785ac",
+        textAlign: 'justify'
       },
     date:{
       flex: 1,
