@@ -1,6 +1,6 @@
 const initialState = { 
     movies: [{ 
-        id: 567097,
+        id: 11,
         rating: "9"
     }]
 }

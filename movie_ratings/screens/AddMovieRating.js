@@ -38,7 +38,7 @@ export default class AddMovieRating extends React.Component {
             this.props.navigation.goBack();
 
             // Go to movie screen
-            this.props.navigation.navigate('Movies');
+            this.props.navigation.navigate('Your movies');
         }
     }
 
@@ -102,7 +102,8 @@ export default class AddMovieRating extends React.Component {
 const styles = StyleSheet.create({
     card: {
         marginTop: 25,
-        marginHorizontal: 10
+        marginHorizontal: 10,
+        backgroundColor: "#fff"
     },
     title: {
         fontSize: 20,

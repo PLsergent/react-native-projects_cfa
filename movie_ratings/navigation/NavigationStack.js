@@ -19,7 +19,7 @@ const SettingsStackNavigator = createStackNavigator();
 export function MoviesStack() {
   return (
     <MoviesStackNavigator.Navigator>
-      <MoviesStackNavigator.Screen name="Movies" component={MoviesScreen} />
+      <MoviesStackNavigator.Screen name="Your movies" component={MoviesScreen} />
       <MoviesStackNavigator.Screen name="Movie details" component={MovieDetailsScreen} />
     </MoviesStackNavigator.Navigator>
   );
@@ -43,6 +43,7 @@ export function SearchStack() {
   return (
     <SearchStackNavigator.Navigator>
       <SearchStackNavigator.Screen name="Search" component={SearchScreen} />
+      <SearchStackNavigator.Screen name="Movie details" component={MovieDetailsScreen} />
     </SearchStackNavigator.Navigator>
   );
 }

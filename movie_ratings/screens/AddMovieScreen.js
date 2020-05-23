@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
     marginTop: 50
   },
   field: {
-    backgroundColor: "#f3f2ff",
-    borderBottomColor: "#4630eb"
+    backgroundColor: "#fafafa",
+    borderBottomColor: "#4630eb",
+    marginRight: 10
   }
 })
