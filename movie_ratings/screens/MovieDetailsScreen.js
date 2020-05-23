@@ -1,14 +1,9 @@
 import React from 'react'
-import { StyleSheet,
-         View,
-         ActivityIndicator,
-         ScrollView,
-         Image
-       } from 'react-native'
+import { StyleSheet, View, ActivityIndicator, ScrollView, Image} from 'react-native'
 import { getMovieDetails, getImage } from '../API/TMDBApi'
 import numeral from 'numeral'
 import moment from 'moment'
-import { Container, Header, Content, Button, Text, Icon } from 'native-base';
+import { Content, Button, Text, Icon } from 'native-base';
 
 export default class MovieDetailsScreen extends React.Component {
 

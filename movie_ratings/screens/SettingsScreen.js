@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { styles } from '../assets/stylesheet'; 
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Text, View } from 'react-native';
 
-
+// TODO
 export default function SettingsScreen() {
   return (
     <View style={styles.container}>

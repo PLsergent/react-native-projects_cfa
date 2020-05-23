@@ -9,7 +9,7 @@ export default function addMovie(state=initialState, action) {
     let nextState
 
     switch(action.type) {
-
+        // Add a movie to your collection
         case 'ADD_MOVIE':
             const isAlreadyThere = state.movies.findIndex(item => item.id === action.value.id)
             if (isAlreadyThere === -1) {

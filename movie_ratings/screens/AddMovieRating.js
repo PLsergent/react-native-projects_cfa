@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
-import { StackActions } from 'react-navigation';
+import { StyleSheet } from 'react-native';
 import { Container, Content, Card, Text, CardItem, Body, Button, Icon, Toast } from 'native-base';
 import ModalDropdown from 'react-native-modal-dropdown';
 import store from '../store/configStore';

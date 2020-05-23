@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Content, Form, Item, Input, Label, Button, Text, Icon, Toast } from 'native-base';
 
 export default class AddMovieScreen extends React.Component {

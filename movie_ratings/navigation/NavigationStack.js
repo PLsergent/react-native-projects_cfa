@@ -22,6 +22,9 @@ export function MoviesStack() {
       <MoviesStackNavigator.Screen name="Your movies" component={MoviesScreen} />
       <MoviesStackNavigator.Screen name="Movie details" component={MovieDetailsScreen} />
     </MoviesStackNavigator.Navigator>
+
+    // Your collection of movies >
+    // Movie details
   );
 }
 
@@ -35,6 +38,7 @@ export function AddMovieStack() {
 
     // Enter the name of the movie inside the form then, Submit then >
     // List of possible movies base on the API, choose one >
+    // Rate the movie and then >
     // Movie added to the list
   );
 }
@@ -44,7 +48,11 @@ export function SearchStack() {
     <SearchStackNavigator.Navigator>
       <SearchStackNavigator.Screen name="Search" component={SearchScreen} />
       <SearchStackNavigator.Screen name="Movie details" component={MovieDetailsScreen} />
+      <AddMovieStackNavigator.Screen name="Rate the movie" component={AddMovieRating} />
     </SearchStackNavigator.Navigator>
+
+    // Research in the database of all the movie
+    // Button to add the movie to the collection in the screen 'Movie details'
   );
 }
 
@@ -53,5 +61,7 @@ export function SettingsStack() {
     <SettingsStackNavigator.Navigator>
       <SettingsStackNavigator.Screen name="Settings" component={SettingsScreen} />
     </SettingsStackNavigator.Navigator>
+
+    // TODO
   );
 }
