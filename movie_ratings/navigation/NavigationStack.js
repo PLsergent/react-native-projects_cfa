@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 
-import { MoviesScreen } from '../screens/MoviesScreen';
+import MoviesScreen from '../screens/MoviesScreen';
 import SearchScreen from '../screens/SearchScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import MovieDetailsScreen from '../screens/MovieDetailsScreen';

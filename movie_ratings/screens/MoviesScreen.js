@@ -3,7 +3,7 @@ import { StyleSheet, FlatList } from 'react-native';
 import MovieComponent from '../components/MovieComponent';
 import store from '../store/configStore';
 
-export class MoviesScreen extends React.Component {
+export default class MoviesScreen extends React.Component {
 
   constructor(props) {
     super(props);

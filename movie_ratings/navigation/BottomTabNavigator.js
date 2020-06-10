@@ -50,18 +50,3 @@ export default function BottomTabNavigator({ navigation, route }) {
     </BottomTab.Navigator>
   );
 }
-
-function getHeaderTitle(route) {
-  const routeName = route.state?.routes[route.state.index]?.name ?? INITIAL_ROUTE_NAME;
-
-  switch (routeName) {
-    case 'Movies':
-      return 'Movies';
-    case 'Search':
-      return 'Search';
-    case 'Settings':
-      return 'Settings'
-    case 'AddMovie':
-      return 'Add Movie'
-  }
-}
